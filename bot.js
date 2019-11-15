@@ -49,4 +49,4 @@ bot.on('message', function (message) {
   }
 });
 
-bot.login(auth.token);
+bot.login(process.env.BOT_TOKEN || auth.token);
