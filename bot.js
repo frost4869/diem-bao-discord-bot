@@ -60,7 +60,7 @@ const remindHolidayJob = new CronJob('0/10 * * * * *', function() {
     if ((new Date('2019-11-23').getDay() % 6)) {
         var holidays = holiday_jp.between(new Date('2019-11-23'), new Date('2019-11-23'));
         if (holidays.length != 0) {
-            console.log("<@" + "Bủ#1605" + "> " + "Mai là ngày đỏ nha");
+            bot.channels.get(mainChannel).send("<@" + "Bủ#1605" + "> " + "Mai là ngày đỏ nha");
         }
     } else {
         console.log("<@" + "Bủ#1605" + "> " + "Mai là cúi từng nha");
