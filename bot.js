@@ -53,7 +53,7 @@ const morningJob = new CronJob('0 0 10 * * *', function() {
     bot.channels.get(mainChannel).send('Ồ Hái Dò');
 }, null, true, 'Asia/Bangkok');
 
-const remindHolidayJob = new CronJob('0/10 * * * * 1-5', function() {
+const remindHolidayJob = new CronJob('0/10 * * * * *', function() {
     var today = new Date();
     var tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
