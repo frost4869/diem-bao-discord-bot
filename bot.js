@@ -2,6 +2,11 @@ var Discord = require('discord.js');
 var logger = require('winston');
 var auth = require('./auth.json');
 var request = require("request");
+import cron from "node-cron";
+
+cron.schedule("* * * * *", () => {
+    client.channels.get("645846862385119252").send('Testing...');
+});
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -40,7 +45,7 @@ bot.on('message', function(message) {
                     const realLink = response.headers.location;
                     const isGenkLink = realLink.toLowerCase().includes('genk.vn')
                     if (isGenkLink) {
-                        rep(message, "<@" + message.author.id + ">" + 'Uh có cố gắng, genk cc')
+                        rep(message, "<@" + message.author.id + "> " + 'Uh có cố gắng, genk clmm')
                     }
                 }
             });
