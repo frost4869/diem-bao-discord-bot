@@ -40,7 +40,7 @@ bot.on('message', function(message) {
                     const realLink = response.headers.location;
                     const isGenkLink = realLink.toLowerCase().includes('genk.vn')
                     if (isGenkLink) {
-                        rep(message, 'Uh có cố gắng, genk cc')
+                        rep(message, "<@" + message.author.id + ">" + 'Uh có cố gắng, genk cc')
                     }
                 }
             });
