@@ -4,9 +4,7 @@ var auth = require('./auth.json');
 var request = require("request");
 import cron from "node-cron";
 
-cron.schedule("* * * * *", () => {
-    client.channels.get("645846862385119252").send('Testing...');
-});
+
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -34,6 +32,9 @@ function isURL(str) {
 
 bot.on('ready', function(evt) {
     logger.info('Connected');
+    cron.schedule("* * * * *", () => {
+        bot.channels.get("645846862385119252").send('Testing...');
+    });
 });
 bot.on('message', function(message) {
     if (message.content.toLowerCase().includes('genk.vn')) {
