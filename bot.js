@@ -39,11 +39,11 @@ const job = new CronJob('0 */10 10-12 * * 1-5', function() {
         // console.log(thread);
         bot.channels.get(mainChannel).send(thread);
     }
-});
+}, null, true, 'Asia/Bangkok');
 
 const morningJob = new CronJob('0 0 10 * * *', function() {
     bot.channels.get(mainChannel).send('Ồ Hái Dò');
-});
+}, null, true, 'Asia/Bangkok');
 
 bot.on('ready', function(evt) {
     logger.info('Connected');
