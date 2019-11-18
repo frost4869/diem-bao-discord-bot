@@ -42,7 +42,7 @@ const job = new CronJob('0 */10 10-12 * * 1-5', function() {
 });
 
 const morningJob = new CronJob('0 0 10 * * *', function() {
-    bot.channels.get(mainChannel).send('Dò');
+    bot.channels.get(mainChannel).send('Ồ Hái Dò');
 });
 
 bot.on('ready', function(evt) {
