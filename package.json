@@ -5,6 +5,7 @@
     "main": "bot.js",
     "author": "frost",
     "dependencies": {
+        "@holiday-jp/holiday_jp": "^2.2.3",
         "cheerio": "^1.0.0-rc.3",
         "cron": "^1.7.2",
         "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
