@@ -6,6 +6,7 @@ var CronJob = require('cron').CronJob;
 const cheerio = require('cheerio');
 const fs = require('fs');
 var threadList = [];
+const mainChannel = '436013570866806799';
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -36,14 +37,19 @@ const job = new CronJob('0 */10 10-12 * * 1-5', function() {
         // array empty or does not exist
         var thread = threadList.shift();
         // console.log(thread);
-        bot.channels.get("645846862385119252").send(thread);
+        bot.channels.get(mainChannel).send(thread);
     }
+});
+
+const morningJob = new CronJob('0 0 10 * * *', function() {
+    bot.channels.get(mainChannel).send('Dò');
 });
 
 bot.on('ready', function(evt) {
     logger.info('Connected');
     crawl_data();
     job.start();
+    morningJob.start();
 
 });
 bot.on('message', function(message) {
