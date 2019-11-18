@@ -1,17 +1,19 @@
 {
-  "name": "anti-genk-bot",
-  "version": "1.0.0",
-  "description": "Bot check điểm báo",
-  "main": "bot.js",
-  "author": "frost",
-  "dependencies": {
-    "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
-    "discord.js": "^11.5.1",
-    "node-cron": "^2.0.3",
-    "request": "^2.88.0",
-    "winston": "^3.2.1"
-  },
-  "scripts": {
-    "start": "node bot.js"
-  }
+    "name": "anti-genk-bot",
+    "version": "1.0.0",
+    "description": "Bot check điểm báo",
+    "main": "bot.js",
+    "author": "frost",
+    "dependencies": {
+        "cheerio": "^1.0.0-rc.3",
+        "cron": "^1.7.2",
+        "discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+        "discord.js": "^11.5.1",
+        "node-cron": "^2.0.3",
+        "request": "^2.88.0",
+        "winston": "^3.2.1"
+    },
+    "scripts": {
+        "start": "node bot.js"
+    }
 }
