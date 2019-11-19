@@ -9,6 +9,8 @@ var threadList = [];
 const mainChannel = '436013570866806799';
 var holiday_jp = require('@holiday-jp/holiday_jp');
 
+var morningWords = ['Dò', 'Ò hái dó', 'Ồ hái dò'];
+
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -34,11 +36,6 @@ function isURL(str) {
     return !!pattern.test(str);
 }
 
-function get_closest_holiday_in_week() {
-    var holidays = holiday_jp.between(new Date('2010-09-14'), new Date('2010-09-21'));
-    console.log(holidays[0]['name']); // 敬老の日
-}
-
 const job = new CronJob('0 */10 10-12 * * 1-5', function() {
     crawl_data();
     if (threadList !== undefined && threadList.length != 0) {
@@ -49,16 +46,18 @@ const job = new CronJob('0 */10 10-12 * * 1-5', function() {
     }
 }, null, true, 'Asia/Bangkok');
 
-const morningJob = new CronJob('0 0 10 * * *', function() {
-    bot.channels.get(mainChannel).send('Ồ Hái Dò');
+const morningJob = new CronJob('0 0 9 * * *', function() {
+    var morningWord = morningWords[Math.floor(Math.random() * morningWords.length)];
+
+    bot.channels.get(mainChannel).send(morningWord);
 }, null, true, 'Asia/Bangkok');
 
 const remindHolidayJob = new CronJob('0/10 * * * * *', function() {
     var today = new Date();
     var tomorrow = new Date();
     tomorrow.setDate(today.getDate() + 1);
-    if ((new Date('2019-11-23').getDay() % 6)) {
-        var holidays = holiday_jp.between(new Date('2019-11-23'), new Date('2019-11-23'));
+    if ((tomorrow.getDay() % 6)) {
+        var holidays = holiday_jp.between(tomorrow, tomorrow);
         if (holidays.length != 0) {
             bot.channels.get(mainChannel).send("<@" + "Bủ#1605" + "> " + "Mai là ngày đỏ nha");
         }
