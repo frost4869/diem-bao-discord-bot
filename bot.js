@@ -36,7 +36,7 @@ function isURL(str) {
     return !!pattern.test(str);
 }
 
-const job = new CronJob('0 */10 10-12 * * 1-5', function() {
+const job = new CronJob('0 */10 10-11 * * 1-5', function() {
     crawl_data();
     if (threadList !== undefined && threadList.length != 0) {
         // array empty or does not exist
