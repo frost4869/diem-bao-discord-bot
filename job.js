@@ -1,6 +1,7 @@
 const CronJob = require("cron").CronJob;
 const cheerio = require("cheerio");
 const holiday_jp = require("@holiday-jp/holiday_jp");
+const request = require("request");
 
 const MAIN_CHANNEL_ID = "436013570866806799";
 

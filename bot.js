@@ -14,6 +14,17 @@ logger.add(new logger.transports.Console(), {
 logger.level = "debug";
 
 let bot = new Discord.Client();
+const botUpdateEmojis = [
+  "pepe_thug",
+  "pepe_gun",
+  "shame",
+  "pepe_up",
+  "pepe_ok",
+  "kappa",
+  "PogChamp",
+  "pepe_gun_2",
+  "pepe_boss"
+];
 
 function rep(message, customMess) {
   message.delete(1000);
@@ -35,7 +46,9 @@ function isURL(str) {
 
 bot.on("ready", function() {
   logger.info("Connected");
-  const ayy = bot.emojis.find(emoji => emoji.name === "pepe_thug");
+  const randomEmo =
+    botUpdateEmojis[Math.floor(Math.random() * botUpdateEmojis.length)];
+  const ayy = bot.emojis.find(emoji => emoji.name === randomEmo);
   bot.channels
     .get(MAIN_CHANNEL_ID)
     .send(`Tao lại vừa thông minh hơn xíu dòi! ${ayy} `);
@@ -45,11 +58,12 @@ bot.on("ready", function() {
 });
 
 bot.on("message", function(message) {
-  if (message.content.toLowerCase().includes("genk.vn")) {
+  const { content, author } = message;
+  if (content.toLowerCase().includes("genk.vn")) {
     rep(message);
   } else {
-    if (isURL(message.content)) {
-      request({ url: message.content, followRedirect: false }, function(
+    if (isURL(content)) {
+      request({ url: content, followRedirect: false }, function(
         error,
         response,
         body
@@ -58,7 +72,7 @@ bot.on("message", function(message) {
           const realLink = response.headers.location;
           const isGenkLink = realLink.toLowerCase().includes("genk.vn");
           if (isGenkLink) {
-            rep(message, `<@${message.author.id}> Uh có cố gắng, genk clmm`);
+            rep(message, `<@${author.id}> Uh có cố gắng, genk clmm`);
           }
         }
       });
