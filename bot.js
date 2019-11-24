@@ -51,9 +51,9 @@ bot.on("ready", function() {
     const randomEmo =
         botUpdateEmojis[Math.floor(Math.random() * botUpdateEmojis.length)];
     const ayy = bot.emojis.find(emoji => emoji.name === randomEmo);
-    // bot.channels
-    //   .get(MAIN_CHANNEL_ID)
-    //   .send(`Tao lại vừa thông minh hơn xíu dòi! ${ayy} `);
+    bot.channels
+        .get(MAIN_CHANNEL_ID)
+        .send(`Tao lại vừa thông minh hơn xíu dòi! ${ayy} `);
     jobs.crawDataJob.start();
     jobs.morningJob.start();
     jobs.remindHolidayJob.start();
