@@ -33,7 +33,7 @@ const remindHolidayJob = new CronJob(
 );
 
 const crawDataJob = new CronJob(
-    "* */10 10-11 * * 1-6",
+    "0 */10 10-11 * * 1-6",
     function() {
         crawl_data()
             .then(function(threadList) {
@@ -84,7 +84,7 @@ function crawl_data() {
                     let link = $(thread).find("td:nth-of-type(2) > div > a");
                     let title = $(link).text();
                     let url = $(link).attr("href");
-                    let id = url.substring(url.indexOf("=") + 1);
+                    let id = url.substring(url.indexOf("t=") + 2);
 
                     let icon = $(thread).find(
                         "td:nth-of-type(2) > div img.inlineimg[src='images/misc/sticky.gif']"
