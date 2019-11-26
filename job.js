@@ -33,7 +33,7 @@ const remindHolidayJob = new CronJob(
 );
 
 const crawDataJob = new CronJob(
-    "0 */10 10-11 * * 1-6",
+    "0 */20 10-11 * * 1-6",
     function() {
         crawl_data()
             .then(function(threadList) {
